@@ -24,6 +24,10 @@
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
+import os
+from qgis.core import QgsApplication
+from qgis.utils import iface
+from qgis.core import *
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -197,4 +201,4 @@ class Predictive_maintenance:
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
-            pass
+            iface.addVectorLayer('https://raw.githubusercontent.com/anythingmapping/predictive_maintenance/main/api.geojson', 'Predicted Failure Points', 'ogr')
