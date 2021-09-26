@@ -28,6 +28,7 @@ import os
 from qgis.core import QgsApplication
 from qgis.utils import iface
 from qgis.core import *
+from PyQt5.QtGui import QColor
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -201,4 +202,10 @@ class Predictive_maintenance:
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
-            iface.addVectorLayer('https://raw.githubusercontent.com/anythingmapping/predictive_maintenance/main/api.geojson', 'Predicted Failure Points', 'ogr')
+            uri = 'https://raw.githubusercontent.com/anythingmapping/predictive_maintenance/main/horizon.geojson'
+            vlayer = iface.addVectorLayer(uri, 'Predicted Failure Points', 'ogr')
+            vlayer.renderer().symbol().setSize(12)
+            vlayer.triggerRepaint()
+            vlayer.renderer().symbol().setColor(QColor("orange"))
+            vlayer.triggerRepaint()
+
